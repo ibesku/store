@@ -200,14 +200,13 @@
     .lead { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 20px; }
 
     /* ========================================================
-       PERUBAHAN BAGIAN 6: GRID MAX 10 & SLIDER PRODUK
+       DESAIN ULANG KARTU PRODUK (RESPONSIVE & TIDAK KEPOTONG)
     ======================================================== */
     
-    /* Grid untuk 10 produk pertama */
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr); /* Maksimal 5 kolom */
-      gap: 24px;
+      grid-template-columns: repeat(5, 1fr); 
+      gap: 20px;
       margin-top: 40px;
     }
 
@@ -220,19 +219,25 @@
       display: flex;
       flex-direction: column;
       transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
     }
 
-    .product-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(37, 99, 235, 0.15); }
+    .product-card:hover { 
+      transform: translateY(-5px); 
+      box-shadow: 0 12px 25px rgba(37, 99, 235, 0.15); 
+    }
     
+    /* Gambar tidak terpotong, rasio 3:4 (karena poster blogspot memanjang) */
     .product-img { 
       width: 100%; 
-      aspect-ratio: 1 / 1; 
-      object-fit: cover; 
+      aspect-ratio: 3 / 4; 
+      object-fit: cover; /* Tetap cover agar memenuhi kotak 3:4, tidak gepeng */
+      object-position: top; /* Fokus ke bagian atas poster */
       background: #e9ecef; 
     }
 
     .product-info {
-      padding: 20px;
+      padding: 15px;
       background: var(--gold);
       color: #fff;
       display: flex;
@@ -241,24 +246,26 @@
       flex-grow: 1;
     }
 
-    .product-info h4 { margin: 0 0 5px 0; font-size: 13px; font-weight: 600; color: #fff; opacity: 0.9; }
-    .product-info h3 { margin: 0 0 15px 0; font-family: var(--font-title); font-size: 16px; font-weight: 400; color: #fff; line-height: 1.4; }
+    /* Mengecilkan font di PC agar rapi */
+    .product-info h4 { margin: 0 0 5px 0; font-size: 11px; font-weight: 600; color: #fff; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px;}
+    .product-info h3 { margin: 0 0 15px 0; font-family: var(--font-title); font-size: 14px; font-weight: 400; color: #fff; line-height: 1.4; }
+    
     .product-price-row { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
-    .product-price { font-weight: 800; font-size: 18px; color: #fff; }
+    .product-price { font-weight: 800; font-size: 16px; color: #fff; white-space: nowrap; }
 
     .btn-arrow {
       background: rgba(255,255,255,0.2);
       border: 1px solid rgba(255,255,255,0.5);
       color: #fff;
-      width: 35px; height: 35px; border-radius: 50%;
+      width: 32px; height: 32px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 18px; transition: background 0.3s;
+      font-size: 18px; transition: background 0.3s; flex-shrink: 0;
     }
     .btn-arrow:hover { background: #fff; color: var(--gold); }
 
-    /* Container untuk Slider Produk Ekstra */
+    /* Slider Produk Ekstra */
     .extra-products-container {
-      display: none; /* Sembunyikan secara default */
+      display: none; 
       position: relative;
       margin-top: 40px;
       background: rgba(255, 255, 255, 0.6);
@@ -267,242 +274,120 @@
       border: 1px dashed var(--gold);
     }
     
-    .extra-products-container.active {
-      display: block; /* Tampilkan jika ada produk > 10 */
-    }
+    .extra-products-container.active { display: block; }
 
     .extra-slider-track {
       display: flex;
-      gap: 24px;
+      gap: 20px;
       overflow-x: auto;
       scroll-behavior: smooth;
-      padding-bottom: 15px; /* Ruang untuk scrollbar */
+      padding-bottom: 15px;
       scrollbar-width: thin;
     }
 
     .extra-slider-track::-webkit-scrollbar { height: 6px; }
     .extra-slider-track::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
 
-    .extra-slider-track .product-card {
-      flex: 0 0 240px; /* Lebar tetap untuk card di dalam slider */
-      margin-bottom: 0;
-    }
+    .extra-slider-track .product-card { flex: 0 0 220px; margin-bottom: 0; }
 
-    /* Navigasi panah untuk slider ekstra */
     .extra-slider-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.6);
-      color: white;
-      border: none;
-      width: 35px; height: 35px;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 10;
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(0,0,0,0.6); color: white;
+      border: none; width: 35px; height: 35px;
+      border-radius: 50%; cursor: pointer; z-index: 10;
       display: flex; justify-content: center; align-items: center;
     }
     .extra-slider-btn:hover { background: var(--gold); }
     .extra-slider-btn.prev { left: -15px; }
     .extra-slider-btn.next { right: -15px; }
 
-    /* Responsif untuk Grid */
+    /* RESPONSIVE LAYOUT (PENTING) */
+    
+    /* Tablet (<=1024px): Jadi 4 kolom */
     @media (max-width: 1024px) {
-      .product-grid { grid-template-columns: repeat(4, 1fr); } /* 4 kolom di tablet */
+      .product-grid { grid-template-columns: repeat(4, 1fr); }
     }
+    
+    /* HP Besar (<=768px): Jadi 2 kolom */
     @media (max-width: 768px) {
-      .product-grid { grid-template-columns: repeat(2, 1fr); } /* 2 kolom di HP besar */
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .product-info h3 { font-size: 13px; }
     }
+    
+    /* HP Kecil (<=480px): Ubah jadi layout HORIZONTAL (Kiri Gambar, Kanan Teks) */
     @media (max-width: 480px) {
-      .product-grid { grid-template-columns: 1fr; } /* 1 kolom di HP kecil */
+      .product-grid { grid-template-columns: 1fr; } /* 1 baris 1 produk */
+      
+      .product-card {
+        flex-direction: row; /* Sejajarkan ke samping */
+        height: auto;
+      }
+      
+      .product-img {
+        width: 45%; /* Gambar ambil 45% lebar */
+        aspect-ratio: 3 / 4;
+        border-radius: 8px 0 0 8px;
+      }
+      
+      .product-info {
+        width: 55%; /* Teks ambil 55% lebar */
+        padding: 15px 10px;
+        border-radius: 0 8px 8px 0;
+      }
+      
+      .product-info h3 { font-size: 14px; margin-bottom: 10px; }
+      .product-price { font-size: 15px; }
     }
 
-    /* CUSTOM LIST */
+    /* ========================================================
+       SECTION LAINNYA (SAMA SEPERTI SEBELUMNYA)
+    ======================================================== */
+
     .custom-list { list-style: none; padding: 0; margin: 0; }
     .custom-list li { position: relative; padding-left: 26px; margin-bottom: 12px; font-size: 15px; color: #333; }
     .custom-list li::before { content: "✓"; position: absolute; left: 0; color: var(--gold); font-weight: 800; font-size: 16px; }
 
-    /* TABEL PERBANDINGAN BARU */
-    .comparison-table { 
-      width: 100%; 
-      border-collapse: collapse; 
-      margin-top: 20px; 
-      background: #fff; 
-      border: 1px solid #e2e8f0; 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    
-    .comparison-table th, .comparison-table td { 
-      padding: 16px 20px; 
-      text-align: left; 
-      border-bottom: 1px solid #e2e8f0; 
-      font-size: 14.5px; 
-      border-right: 1px solid #e2e8f0;
-    }
-
-    .comparison-table th {
-      background: #f8fafc;
-      padding: 25px 20px 15px 20px;
-      vertical-align: top;
-    }
-
-    .comparison-table th .label {
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .comparison-table th .title {
-      font-family: var(--font-title);
-      font-weight: 400;
-      font-size: 15px;
-      line-height: 1.4;
-      display: block;
-    }
-
-    /* Warna Kolom Kiri (SEBELUM) */
+    .comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #fff; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; }
+    .comparison-table th, .comparison-table td { padding: 16px 20px; text-align: left; border-bottom: 1px solid #e2e8f0; font-size: 14.5px; border-right: 1px solid #e2e8f0; }
+    .comparison-table th { background: #f8fafc; padding: 25px 20px 15px 20px; vertical-align: top; }
+    .comparison-table th .label { font-family: var(--font-body); font-size: 11px; font-weight: 800; letter-spacing: 1.5px; display: block; margin-bottom: 8px; }
+    .comparison-table th .title { font-family: var(--font-title); font-weight: 400; font-size: 15px; line-height: 1.4; display: block; }
     .comparison-table th.col-before { background: #fff1f2; }
     .comparison-table th.col-before .label { color: #e11d48; }
     .comparison-table th.col-before .title { color: #64748b; } 
-
-    /* Warna Kolom Kanan (SESUDAH) */
-    .comparison-table th.col-after {
-      background: #f0fdf4;
-      border-bottom: 2px solid #10b981;
-    }
+    .comparison-table th.col-after { background: #f0fdf4; border-bottom: 2px solid #10b981; }
     .comparison-table th.col-after .label { color: #059669; }
     .comparison-table th.col-after .title { color: #0f172a; font-weight: 600; }
-
     .comparison-table td { color: var(--muted); }
-    .comparison-table .highlight-col { 
-      background: #f0fdf4;
-      font-weight: 600; 
-      color: #0f172a; 
-    }
-    
-    .comparison-table th:last-child, 
-    .comparison-table td:last-child { border-right: none; }
+    .comparison-table .highlight-col { background: #f0fdf4; font-weight: 600; color: #0f172a; }
+    .comparison-table th:last-child, .comparison-table td:last-child { border-right: none; }
     .comparison-table tr:last-child td { border-bottom: none; }
 
-    /* CTA BOX */
-    .cta-box { 
-      background: #17191c; 
-      color: #fff; 
-      padding: 45px; 
-      border-radius: 8px; 
-      text-align: center; 
-      margin-top: 40px; 
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
+    .cta-box { background: #17191c; color: #fff; padding: 45px; border-radius: 8px; text-align: center; margin-top: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
     .cta-box h2 { font-family: var(--font-title); font-weight: 400; font-size: clamp(20px, 3vw, 30px); color: #fff; margin-top: 0; }
     .cta-box p { color: #d2d2d2; max-width: 700px; margin: 0 auto 20px auto; }
-    
-    .btn-cta { 
-      display: block; 
-      width: 100%; 
-      max-width: 450px; 
-      margin: 20px auto 0 auto; 
-      background: var(--gold); 
-      color: #151515; 
-      padding: 16px 20px; 
-      font-family: var(--font-title); 
-      font-size: 15px; 
-      border-radius: 4px; 
-      font-weight: 700; 
-      transition: 0.3s; 
-    }
+    .btn-cta { display: block; width: 100%; max-width: 450px; margin: 20px auto 0 auto; background: var(--gold); color: #151515; padding: 16px 20px; font-family: var(--font-title); font-size: 15px; border-radius: 4px; font-weight: 700; transition: 0.3s; }
     .btn-cta:hover { background: #d1a862; transform: translateY(-2px); }
 
     .notice { font-size: 12.5px; color: #555; margin-top: 14px; line-height: 1.65; }
     .footer { background: #111; color: #bbb; padding: 35px 0; font-size: 13.5px; text-align: center; }
 
-    /* ========================================================
-       MODAL ADMIN PANEL
-    ======================================================== */
-    #adminOverlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      z-index: 9999;
-      backdrop-filter: blur(3px);
-    }
-
-    #adminPanel {
-      display: none;
-      position: fixed;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 95%; max-width: 1000px;
-      max-height: 90vh;
-      background: #fff;
-      border-radius: 10px;
-      z-index: 10000;
-      overflow-y: auto;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .admin-header {
-      background: #f8f9fa;
-      padding: 15px 25px;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
+    /* MODAL ADMIN PANEL */
+    #adminOverlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9999; backdrop-filter: blur(3px); }
+    #adminPanel { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 95%; max-width: 1000px; max-height: 90vh; background: #fff; border-radius: 10px; z-index: 10000; overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.3); font-family: 'Montserrat', sans-serif; }
+    .admin-header { background: #f8f9fa; padding: 15px 25px; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10; }
     .admin-header h2 { margin: 0; font-size: 18px; color: #333; font-family: 'Montserrat', sans-serif; }
     .admin-actions { display: flex; gap: 10px; }
-    
     .admin-btn { padding: 8px 16px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 13px; }
     .admin-btn.green { background: #10b981; color: white; }
     .admin-btn.gold { background: #bd9654; color: white; }
     .admin-btn.red { background: #ef4444; color: white; }
-
     .admin-body { padding: 25px; }
-    
-    .admin-section-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
+    .admin-section-title { font-size: 16px; font-weight: 600; color: #333; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
     .form-group { margin-bottom: 15px; display: flex; flex-direction: column; }
     .form-group label { font-size: 13px; font-weight: 600; margin-bottom: 5px; color: #555; }
-    .form-group input, .form-group textarea, .form-group select {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
-    }
-
-    #passwordBox {
-      display: none;
-      position: fixed;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      background: #fff;
-      padding: 30px;
-      border-radius: 8px;
-      z-index: 10001;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      width: 300px;
-    }
+    .form-group input, .form-group textarea, .form-group select { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Montserrat', sans-serif; font-size: 14px; }
+    #passwordBox { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 30px; border-radius: 8px; z-index: 10001; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); width: 300px; }
     #passwordBox h3 { margin-top: 0; font-size: 16px; color: #333; }
     #passwordBox input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; }
     #passwordBox button { width: 100%; padding: 10px; background: #bd9654; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
@@ -854,7 +739,7 @@
     let products = [{"id":1795769298044,"category":"DESIGN STUDIO","name":"DESIGN KOS 12 KAMAR","price":"Rp. 399.000","link":"http://lynk.id/ibes-store/egx1qwvxvjwv","image":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_mOjzPUal8kIRLQJ4qgzBFD_pb_RfDusIDbRjnV91Gi3OfEx5WSVMD8WMoI6vMxdsn15LY15qQCVZ6dWh-K-GT0GRO0gI8JcJCxtvVDzwVDfFA3k46s2_O8J3rzZIvMIrO1IFM0tavILljsnIlv_hdwvbrQBT4sDvavZnSBTs-FvbixYiIOFKw65B1xIP/s1600/Modern%20Tropical%20Guest%20House%20Design.png"},{"id":1795769337324,"category":"DESIGN STUDIO","name":"DESIGN KOS 24 KAMAR","price":"Rp. 499.000","link":"http://lynk.id/ibes-store/p1ve64zoo3lj","image":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIEdEu9ytif8RPezyg_otUlPvi9JvudsIMWiqs1lHLSamNr_71fFYFi3sPFD1tkT2tMbzRH1kRv6GqmsB-T7b3XRphZnfThXWqI-pWdGLUZHggb8XM_8x3LQARQDgaYlquqO1kPRRMNNOoQEjsTVrzeR54d8t2w9_VO0GFGNAQo0SK_8c5OWFrZRAkB9Kg/s1600/Modern%20Kos-Kosan%20Design%20Package%20Poster.png"},{"id":1795769374047,"category":"DESIGN STUDIO","name":"DESIGN RUMAH MODERN TROPIS","price":"Rp. 699.000","link":"http://lynk.id/ibes-store/5re657zrr5zp","image":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJ39SLw0Wj8mvaVjlSpTusiZ37qvE2TY3vvrEoehj8S_xR5zSSprN6XbheHK9idnib02TdAnBbOt8F2bk5V-RC3jEyy9XOglxTMTntg6yAW22beHBQNR_bUI91RT2H9W2vzXBqTLdBQvMkUZ7EC56KG9BU8LHqyJa1cY3qu5FEltWAfo6K7bCfuQavVZA/s1600/rumah_modern_tropis_fullbleed_1054x1492.jpg"},{"id":1795769407607,"category":"DESIGN STUDIO","name":"DESIGN RUMAH AMERICAN KLASIK","price":"Rp. 699.000","link":"http://lynk.id/ibes-store/23zymg888o38","image":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmyGK4o-4p31c810qPcHiT0_EK-9DFmoM1jnbrH2djDcV5ZFN9EtTFH0lh-X2gp1hDoog3sFAB0Zl6ktZEesVaDJBLb-uQ_PIgLJZGnHPbbwxEf-lNTcvD7Q_R2upN1Y7eey5ukdRRicDnWriX6LB_il7By39taWgmgTY3IadBrJGyXOzH8KJVE5znrs5_/s1600/American%20Classic%20House%20Design%20Package%20%281%29.png"}];
 
     // ==========================================
-    // RENDER FUNCTIONS (Logika Tampilan)
+    // RENDER FUNCTIONS
     // ==========================================
     function renderSlider() {
       const track = document.getElementById('heroSliderTrack');
@@ -891,29 +776,24 @@
       grid.innerHTML = '';
       extraTrack.innerHTML = '';
 
-      // Logika: Jika produk <= 10, tampilkan semua di Grid.
-      // Jika > 10, ambil 10 untuk Grid, sisanya masuk ke Slider.
       const maxGrid = 10;
       
       if (products.length <= maxGrid) {
-        // Tampilkan semua di Grid
         products.forEach(prod => {
           grid.appendChild(createProductCard(prod));
         });
-        extraContainer.classList.remove('active'); // Sembunyikan slider
+        extraContainer.classList.remove('active');
       } else {
-        // Tampilkan 10 pertama di Grid
         const gridProducts = products.slice(0, maxGrid);
         gridProducts.forEach(prod => {
           grid.appendChild(createProductCard(prod));
         });
 
-        // Tampilkan sisanya di Slider
         const extraProducts = products.slice(maxGrid);
         extraProducts.forEach(prod => {
           extraTrack.appendChild(createProductCard(prod));
         });
-        extraContainer.classList.add('active'); // Tampilkan slider
+        extraContainer.classList.add('active');
       }
     }
 
