@@ -19,8 +19,8 @@
       --line: #e7e2d9;
       --white: #fff;
       --red: #c93b2b;
-      --blue: #2563eb; /* Biru cerah */
-      --yellow: #facc15; /* Kuning cerah */
+      --blue: #2563eb;
+      --yellow: #facc15;
       --font-title: 'Michroma', sans-serif;
       --font-body: 'Montserrat', sans-serif;
     }
@@ -28,20 +28,16 @@
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
-    /* ========================================================
-       BACKGROUND CERAH DENGAN EFEK GOLD, BIRU, & KUNING
-    ======================================================== */
+    /* BACKGROUND CERAH DENGAN EFEK GOLD, BIRU, & KUNING */
     body {
       margin: 0;
-      /* Latar belakang dasar putih cerah */
       background-color: #ffffff;
-      /* Efek pendar cahaya (Radial Gradients) */
       background-image: 
-        radial-gradient(circle at 10% 10%, rgba(250, 204, 21, 0.15) 0%, transparent 40%), /* Pendar Kuning di kiri atas */
-        radial-gradient(circle at 90% 20%, rgba(37, 99, 235, 0.12) 0%, transparent 45%), /* Pendar Biru di kanan atas */
-        radial-gradient(circle at 50% 50%, rgba(189, 150, 84, 0.1) 0%, transparent 60%), /* Pendar Emas di tengah */
-        radial-gradient(circle at 10% 90%, rgba(37, 99, 235, 0.08) 0%, transparent 40%), /* Pendar Biru di kiri bawah */
-        radial-gradient(circle at 90% 80%, rgba(250, 204, 21, 0.12) 0%, transparent 40%); /* Pendar Kuning di kanan bawah */
+        radial-gradient(circle at 10% 10%, rgba(250, 204, 21, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 20%, rgba(37, 99, 235, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(189, 150, 84, 0.1) 0%, transparent 60%),
+        radial-gradient(circle at 10% 90%, rgba(37, 99, 235, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(250, 204, 21, 0.12) 0%, transparent 40%);
       background-attachment: fixed;
       background-size: cover;
       color: var(--ink);
@@ -87,7 +83,6 @@
 
     /* HERO SECTION */
     .hero {
-      /* Dihilangkan background solidnya agar gradien body terlihat tembus */
       background: transparent; 
       color: var(--ink);
       padding: 80px 0 0 0;
@@ -136,7 +131,7 @@
       transition: transform .15s ease, opacity .15s ease;
       margin-bottom: 40px;
       border: none;
-      box-shadow: 0 4px 15px rgba(201, 59, 43, 0.3); /* Shadow tombol */
+      box-shadow: 0 4px 15px rgba(201, 59, 43, 0.3);
     }
 
     .btn-promo:hover { opacity: .9; transform: translateY(-2px); }
@@ -150,7 +145,7 @@
       overflow: hidden;
       border-top-left-radius: 12px;
       border-top-right-radius: 12px;
-      box-shadow: 0 -10px 30px rgba(0,0,0,0.05); /* Shadow lebih ringan karena background cerah */
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
       background: #fff;
     }
 
@@ -192,7 +187,6 @@
 
     /* SECTION UMUM */
     .section { padding: 80px 0; }
-    /* Section.soft dibuat transparan agar gradien terlihat, diganti dengan efek kaca (glassmorphism) */
     .section.soft { 
       background: rgba(255, 255, 255, 0.4); 
       backdrop-filter: blur(10px);
@@ -223,7 +217,7 @@
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .product-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(37, 99, 235, 0.15); } /* Shadow biru saat hover */
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(37, 99, 235, 0.15); }
     .product-img { width: 100%; height: 320px; object-fit: cover; background: #e9ecef; }
 
     .product-info {
@@ -256,7 +250,7 @@
     .custom-list li { position: relative; padding-left: 26px; margin-bottom: 12px; font-size: 15px; color: #333; }
     .custom-list li::before { content: "✓"; position: absolute; left: 0; color: var(--gold); font-weight: 800; font-size: 16px; }
 
-    /* TABEL PERBANDINGAN BARU (Dibuat lebih solid karena background cerah) */
+    /* TABEL PERBANDINGAN BARU */
     .comparison-table { 
       width: 100%; 
       border-collapse: collapse; 
@@ -306,7 +300,7 @@
 
     /* Warna Kolom Kanan (SESUDAH) */
     .comparison-table th.col-after {
-      background: #f0fdf4; /* Hijau sangat muda */
+      background: #f0fdf4;
       border-bottom: 2px solid #10b981;
     }
     .comparison-table th.col-after .label { color: #059669; }
@@ -314,7 +308,7 @@
 
     .comparison-table td { color: var(--muted); }
     .comparison-table .highlight-col { 
-      background: #f0fdf4; /* Hijau muda */
+      background: #f0fdf4;
       font-weight: 600; 
       color: #0f172a; 
     }
@@ -467,13 +461,13 @@
       <div class="eyebrow">PRODUK DIGITAL: KATALOG DESAIN RUMAH SIAP BANGUN</div>
       <h1>Pilih Desainnya, Sesuaikan Lahannya, Mulai Bangun Rumah Impian Anda!</h1>
       <p>Ribuan inspirasi mungkin membuat Anda bingung. Kami hadirkan pilihan desain rumah berdasarkan ukuran lahan dan berbagai tipe bangunan, sehingga Anda tidak perlu memulai semuanya dari nol.</p>
-      <a href="#katalog-produk" class="btn-promo">PROMO KATALOG &nbsp; <span>&darr;</span></a>
+      <a href="#katalog-produk" class="btn-promo">PROMO KATALOG &nbsp; <span>↓</span></a>
     </div>
 
     <div class="hero-slider">
       <div class="slider-track" id="heroSliderTrack"></div>
-      <button class="slider-nav prev" onclick="moveSlide(-1)">&#10094;</button>
-      <button class="slider-nav next" onclick="moveSlide(1)">&#10095;</button>
+      <button class="slider-nav prev" onclick="moveSlide(-1)">❮</button>
+      <button class="slider-nav next" onclick="moveSlide(1)">❯</button>
     </div>
   </header>
 
@@ -870,10 +864,18 @@
     }
 
     // ==========================================
-    // FITUR UNDUH HTML
+    // FITUR UNDUH HTML (DIPERBAIKI)
     // ==========================================
     function downloadHTML() {
+      // 1. SEMBUNYIKAN PANEL ADMIN SEBELUM DIUNDUH
+      // Ini mencegah panel admin ikut tersimpan dalam keadaan terbuka
+      document.getElementById('adminOverlay').style.display = 'none';
+      document.getElementById('adminPanel').style.display = 'none';
+      
+      // 2. Ambil HTML saat ini
       let htmlContent = document.documentElement.outerHTML;
+
+      // 3. Suntikkan data terbaru
       const newDataScript = `
         let heroImages = ${JSON.stringify(heroImages)};
         let products = ${JSON.stringify(products)};
@@ -886,6 +888,7 @@
         alert("Peringatan: Gagal menyuntikkan data baru secara otomatis.");
       }
 
+      // 4. Proses Unduh
       const blob = new Blob([htmlContent], { type: 'text/html' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -895,6 +898,11 @@
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
+      
+      // 5. (Opsional) Tampilkan kembali alert setelah unduhan dipicu
+      setTimeout(() => {
+        alert('File berhasil diunduh. Silakan upload ke GitHub.');
+      }, 500);
     }
 
     // ==========================================
