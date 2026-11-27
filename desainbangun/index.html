@@ -1,11 +1,13 @@
-<html lang="id"><head>
+<!DOCTYPE html>
+<html lang="id">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Desain Siap Bangun by ALUSINDO</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Michroma&amp;family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -133,7 +135,7 @@
 
     .btn-promo:hover { opacity: .9; transform: translateY(-2px); }
 
-    /* SLIDER (RASIO 16:9) */
+    /* SLIDER HERO (RASIO 16:9) */
     .hero-slider {
       position: relative;
       width: 100%;
@@ -144,7 +146,7 @@
       border-top-right-radius: 12px;
       box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
       background: #fff;
-      aspect-ratio: 16 / 9; /* Kunci rasio 16:9 */
+      aspect-ratio: 16 / 9;
     }
 
     .slider-track {
@@ -157,7 +159,7 @@
       flex: 0 0 100%;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Tetap cover agar mengisi kotak 16:9 */
+      object-fit: cover;
       display: block;
     }
 
@@ -197,10 +199,14 @@
     .heading { font-family: var(--font-title); font-weight: 400; font-size: clamp(22px, 3.1vw, 34px); line-height: 1.3; margin: 0 0 16px; color: #111; }
     .lead { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 20px; }
 
-    /* KATALOG PRODUK */
+    /* ========================================================
+       PERUBAHAN BAGIAN 6: GRID MAX 10 & SLIDER PRODUK
+    ======================================================== */
+    
+    /* Grid untuk 10 produk pertama */
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-template-columns: repeat(5, 1fr); /* Maksimal 5 kolom */
       gap: 24px;
       margin-top: 40px;
     }
@@ -218,10 +224,9 @@
 
     .product-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(37, 99, 235, 0.15); }
     
-    /* PERBAIKAN: GAMBAR PRODUK DIBUAT RASIO 1:1 (PERSEGI) */
     .product-img { 
       width: 100%; 
-      aspect-ratio: 1 / 1; /* Kunci rasio 1:1 */
+      aspect-ratio: 1 / 1; 
       object-fit: cover; 
       background: #e9ecef; 
     }
@@ -250,6 +255,67 @@
       font-size: 18px; transition: background 0.3s;
     }
     .btn-arrow:hover { background: #fff; color: var(--gold); }
+
+    /* Container untuk Slider Produk Ekstra */
+    .extra-products-container {
+      display: none; /* Sembunyikan secara default */
+      position: relative;
+      margin-top: 40px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 8px;
+      padding: 20px 10px;
+      border: 1px dashed var(--gold);
+    }
+    
+    .extra-products-container.active {
+      display: block; /* Tampilkan jika ada produk > 10 */
+    }
+
+    .extra-slider-track {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 15px; /* Ruang untuk scrollbar */
+      scrollbar-width: thin;
+    }
+
+    .extra-slider-track::-webkit-scrollbar { height: 6px; }
+    .extra-slider-track::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+
+    .extra-slider-track .product-card {
+      flex: 0 0 240px; /* Lebar tetap untuk card di dalam slider */
+      margin-bottom: 0;
+    }
+
+    /* Navigasi panah untuk slider ekstra */
+    .extra-slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.6);
+      color: white;
+      border: none;
+      width: 35px; height: 35px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      display: flex; justify-content: center; align-items: center;
+    }
+    .extra-slider-btn:hover { background: var(--gold); }
+    .extra-slider-btn.prev { left: -15px; }
+    .extra-slider-btn.next { right: -15px; }
+
+    /* Responsif untuk Grid */
+    @media (max-width: 1024px) {
+      .product-grid { grid-template-columns: repeat(4, 1fr); } /* 4 kolom di tablet */
+    }
+    @media (max-width: 768px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); } /* 2 kolom di HP besar */
+    }
+    @media (max-width: 480px) {
+      .product-grid { grid-template-columns: 1fr; } /* 1 kolom di HP kecil */
+    }
 
     /* CUSTOM LIST */
     .custom-list { list-style: none; padding: 0; margin: 0; }
@@ -440,14 +506,6 @@
     #passwordBox h3 { margin-top: 0; font-size: 16px; color: #333; }
     #passwordBox input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; }
     #passwordBox button { width: 100%; padding: 10px; background: #bd9654; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
-
-    @media (max-width: 760px) {
-      .top .wrap { font-size: 10.5px; flex-direction: column; text-align: center; gap: 6px; }
-      .product-grid { grid-template-columns: 1fr; }
-      .cta-box { padding: 30px 20px; }
-      .comparison-table th, .comparison-table td { padding: 12px; font-size: 13px; }
-      .comparison-table th { padding: 20px 12px 10px 12px; }
-    }
   </style>
 </head>
 <body>
@@ -470,7 +528,7 @@
     </div>
 
     <div class="hero-slider">
-      <div class="slider-track" id="heroSliderTrack" style="transform: translateX(-100%);"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhW5ZcGa6f8NqToba-CYzB4S2raYjgEkqflr2MxQpNE2ETp0dnn_qxXdJEfR30yS2IWfsY8elWuBEa5HpL-96o0FohKELU3nUe2-TjGV42RD0Vmuy9oNRXcsfaKAqdv5wRGdhbbvJRKm_vLTnrbgnV6v42ovWmlVLdIj7WFqhY6uUe1oksWiW1SK6y6g6c/s1600/Design%20Studio%20Project%20with%20Architect%20Presenter.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggE8uuYSwoqVbYyhCQQbCU9AWsUP1vSxL53RgIiiRKLfDn9xNgw5kIPOSMOb2NXDrlrF4zgyQ_Lj332-MzYvyyKUpvZ9rArlh8blSHaNJ8riaGUVvgxhmbnTpCu3RcjIgPHO5LgnqmP5of3UGw-muFlT2Otm74HwsXAPOjBC6h6kCqEoN2jF6vOs-02ng/s1600/Screenshot%202026-11-24%20105213.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGkuegqLPYU8454gx3vTWQo2ttaUqBOGrceAmkkpm5QtnhhfD7l1WAW7JCwjVUGpS6_hPHU-6lxPQ8WQHQ4RLkE2ZEUb4zxBJXB5uilI6u4llUOiD18fKi1tKhOyf7JTILz4P1rJQBxOUTXmlO1QhdOdW3iCzaOr5blAtOjNofws20yA-20-WJaPzl4Q0/s1600/Screenshot%202026-11-26%20114857.png"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7G6OHABUIv1SbSSQJ7JIrOZpOOtLeiXhkpsF-FRbgzHdkzNfhr58WfGiRo0NUu96dSvwnvBwCH3v9SpA-qMJFEpJiLeuRxAeqd8ndIYwyIxTD75xYF3DHqAG3zF77D7id-CBDl9E5SKbykkrTej5wsGfzrlbtZPGmLW3uCNNAz9ZTnYweM7MwKweZ7so/s1600/Screenshot%202026-10-24%20031341.png"></div>
+      <div class="slider-track" id="heroSliderTrack"></div>
       <button class="slider-nav prev" onclick="moveSlide(-1)">❮</button>
       <button class="slider-nav next" onclick="moveSlide(1)">❯</button>
     </div>
@@ -498,7 +556,7 @@
   <!-- SECTION 2: UKURAN LAHAN & KONSEP DESAIN -->
   <section class="section soft">
     <div class="wrap">
-      <div class="kicker">2. PILIHAN DESAIN &amp; UKURAN LAHAN</div>
+      <div class="kicker">2. PILIHAN DESAIN & UKURAN LAHAN</div>
       <h2 class="heading">Tersedia berbagai pilihan desain dan ukuran lahan</h2>
       <p>Konsumen tidak perlu bingung menentukan konsep rumah. Kami menyediakan katalog berbagai tipe dan ukuran desain yang bisa dipilih sesuai kebutuhan.</p>
 
@@ -679,48 +737,20 @@
       <h3 style="font-family:var(--font-title); font-size:18px; margin-bottom:10px;">PILIH DESAIN SESUAI KEBUTUHAN</h3>
       <p>Cukup pilih desain yang Anda sukai, konsultasikan penyesuaian dengan kondisi lahan, kemudian siapkan pembangunan Anda.</p>
 
-      <!-- KATALOG PRODUK GRID -->
-      <div class="product-grid" id="productGrid"><div class="product-card">
-          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_mOjzPUal8kIRLQJ4qgzBFD_pb_RfDusIDbRjnV91Gi3OfEx5WSVMD8WMoI6vMxdsn15LY15qQCVZ6dWh-K-GT0GRO0gI8JcJCxtvVDzwVDfFA3k46s2_O8J3rzZIvMIrO1IFM0tavILljsnIlv_hdwvbrQBT4sDvavZnSBTs-FvbixYiIOFKw65B1xIP/s1600/Modern%20Tropical%20Guest%20House%20Design.png" alt="DESIGN KOS 12 KAMAR" class="product-img">
-          <div class="product-info">
-            <h4>DESIGN STUDIO</h4>
-            <h3>DESIGN KOS 12 KAMAR</h3>
-            <div class="product-price-row">
-              <span class="product-price">Rp. 399.000</span>
-              <a href="http://lynk.id/ibes-store/egx1qwvxvjwv" target="_blank" class="btn-arrow">›</a>
-            </div>
-          </div>
-        </div><div class="product-card">
-          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIEdEu9ytif8RPezyg_otUlPvi9JvudsIMWiqs1lHLSamNr_71fFYFi3sPFD1tkT2tMbzRH1kRv6GqmsB-T7b3XRphZnfThXWqI-pWdGLUZHggb8XM_8x3LQARQDgaYlquqO1kPRRMNNOoQEjsTVrzeR54d8t2w9_VO0GFGNAQo0SK_8c5OWFrZRAkB9Kg/s1600/Modern%20Kos-Kosan%20Design%20Package%20Poster.png" alt="DESIGN KOS 24 KAMAR" class="product-img">
-          <div class="product-info">
-            <h4>DESIGN STUDIO</h4>
-            <h3>DESIGN KOS 24 KAMAR</h3>
-            <div class="product-price-row">
-              <span class="product-price">Rp. 499.000</span>
-              <a href="http://lynk.id/ibes-store/p1ve64zoo3lj" target="_blank" class="btn-arrow">›</a>
-            </div>
-          </div>
-        </div><div class="product-card">
-          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJ39SLw0Wj8mvaVjlSpTusiZ37qvE2TY3vvrEoehj8S_xR5zSSprN6XbheHK9idnib02TdAnBbOt8F2bk5V-RC3jEyy9XOglxTMTntg6yAW22beHBQNR_bUI91RT2H9W2vzXBqTLdBQvMkUZ7EC56KG9BU8LHqyJa1cY3qu5FEltWAfo6K7bCfuQavVZA/s1600/rumah_modern_tropis_fullbleed_1054x1492.jpg" alt="DESIGN RUMAH MODERN TROPIS" class="product-img">
-          <div class="product-info">
-            <h4>DESIGN STUDIO</h4>
-            <h3>DESIGN RUMAH MODERN TROPIS</h3>
-            <div class="product-price-row">
-              <span class="product-price">Rp. 699.000</span>
-              <a href="http://lynk.id/ibes-store/5re657zrr5zp" target="_blank" class="btn-arrow">›</a>
-            </div>
-          </div>
-        </div><div class="product-card">
-          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmyGK4o-4p31c810qPcHiT0_EK-9DFmoM1jnbrH2djDcV5ZFN9EtTFH0lh-X2gp1hDoog3sFAB0Zl6ktZEesVaDJBLb-uQ_PIgLJZGnHPbbwxEf-lNTcvD7Q_R2upN1Y7eey5ukdRRicDnWriX6LB_il7By39taWgmgTY3IadBrJGyXOzH8KJVE5znrs5_/s1600/American%20Classic%20House%20Design%20Package%20%281%29.png" alt="DESIGN RUMAH AMERICAN KLASIK" class="product-img">
-          <div class="product-info">
-            <h4>DESIGN STUDIO</h4>
-            <h3>DESIGN RUMAH AMERICAN KLASIK</h3>
-            <div class="product-price-row">
-              <span class="product-price">Rp. 699.000</span>
-              <a href="http://lynk.id/ibes-store/23zymg888o38" target="_blank" class="btn-arrow">›</a>
-            </div>
-          </div>
-        </div></div>
+      <!-- KATALOG PRODUK GRID (Maks 10 Produk Pertama) -->
+      <div class="product-grid" id="productGrid">
+        <!-- Diisi via JS -->
+      </div>
+
+      <!-- SLIDER PRODUK EKSTRA (Produk ke-11 dst) -->
+      <div class="extra-products-container" id="extraProductsContainer">
+        <h4 style="margin-top: 0; margin-bottom: 15px; font-family: var(--font-title); color: var(--gold-dark); font-size: 14px;">Pilihan Desain Lainnya:</h4>
+        <button class="extra-slider-btn prev" onclick="document.getElementById('extraSliderTrack').scrollBy({left: -300, behavior: 'smooth'})">❮</button>
+        <button class="extra-slider-btn next" onclick="document.getElementById('extraSliderTrack').scrollBy({left: 300, behavior: 'smooth'})">❯</button>
+        <div class="extra-slider-track" id="extraSliderTrack">
+          <!-- Diisi via JS -->
+        </div>
+      </div>
     </div>
   </section>
 
@@ -738,7 +768,7 @@
         <p>Jangan sampai uang ratusan juta yang Anda investasikan untuk membangun rumah justru terbuang karena perencanaan yang kurang matang.</p>
         <p>Jangan tunda rencana membangun rumah impian Anda. Temukan desain yang sesuai dengan ukuran lahan Anda melalui katalog desain rumah kami.</p>
         
-        <a href="#katalog-produk" class="btn-cta">LIHAT KATALOG DESAIN SEKARANG →</a>
+        <a href="#katalog-produk" class="btn-cta">LIHAT KATALOG DESAIN SEKARANG &rarr;</a>
       </div>
     </div>
   </section>
@@ -756,17 +786,17 @@
        ADMIN PANEL & MODAL PASSWORD
   ======================================================== -->
   
-  <div id="adminOverlay" style="display: none;"></div>
+  <div id="adminOverlay"></div>
 
-  <div id="passwordBox" style="display: none;">
+  <div id="passwordBox">
     <h3>Masukkan Password Admin</h3>
     <input type="password" id="adminPassword" placeholder="Password..." onkeypress="if(event.key === 'Enter') checkPassword()">
     <button onclick="checkPassword()">Masuk</button>
   </div>
 
-  <div id="adminPanel" style="display: none;">
+  <div id="adminPanel">
     <div class="admin-header">
-      <h2>⚙️ Panel Kelola Toko &amp; Database</h2>
+      <h2>⚙️ Panel Kelola Toko & Database</h2>
       <div class="admin-actions">
         <button class="admin-btn green" onclick="downloadHTML()">⬇️ Unduh index.html</button>
         <button class="admin-btn red" onclick="closeAdmin()">✖ Keluar</button>
@@ -810,35 +840,21 @@
       <hr style="margin: 25px 0; border: 0; border-top: 1px solid #ddd;">
 
       <h3 class="admin-section-title">📦 Daftar Produk Saat Ini</h3>
-      <div id="adminProductList" style="display: flex; flex-direction: column; gap: 10px;"><div style="display: flex; justify-content: space-between; align-items: center; background: rgb(249, 249, 249); padding: 10px; border: 1px solid rgb(221, 221, 221); border-radius: 4px;">
-          <span><b>DESIGN KOS 12 KAMAR</b> (Rp. 399.000)</span>
-          <button class="admin-btn red" onclick="deleteProduct(0)">Hapus</button>
-        </div><div style="display: flex; justify-content: space-between; align-items: center; background: rgb(249, 249, 249); padding: 10px; border: 1px solid rgb(221, 221, 221); border-radius: 4px;">
-          <span><b>DESIGN KOS 24 KAMAR</b> (Rp. 499.000)</span>
-          <button class="admin-btn red" onclick="deleteProduct(1)">Hapus</button>
-        </div><div style="display: flex; justify-content: space-between; align-items: center; background: rgb(249, 249, 249); padding: 10px; border: 1px solid rgb(221, 221, 221); border-radius: 4px;">
-          <span><b>DESIGN RUMAH MODERN TROPIS</b> (Rp. 699.000)</span>
-          <button class="admin-btn red" onclick="deleteProduct(2)">Hapus</button>
-        </div><div style="display: flex; justify-content: space-between; align-items: center; background: rgb(249, 249, 249); padding: 10px; border: 1px solid rgb(221, 221, 221); border-radius: 4px;">
-          <span><b>DESIGN RUMAH AMERICAN KLASIK</b> (Rp. 699.000)</span>
-          <button class="admin-btn red" onclick="deleteProduct(3)">Hapus</button>
-        </div></div>
+      <div id="adminProductList" style="display: flex; flex-direction: column; gap: 10px;"></div>
 
     </div>
   </div>
 
   <script>
     // ==========================================
-    // DATA STATE
+    // DATA STATE (Semua data produk Anda aman di sini)
     // ==========================================
+    let heroImages = ["https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhW5ZcGa6f8NqToba-CYzB4S2raYjgEkqflr2MxQpNE2ETp0dnn_qxXdJEfR30yS2IWfsY8elWuBEa5HpL-96o0FohKELU3nUe2-TjGV42RD0Vmuy9oNRXcsfaKAqdv5wRGdhbbvJRKm_vLTnrbgnV6v42ovWmlVLdIj7WFqhY6uUe1oksWiW1SK6y6g6c/s1600/Design%20Studio%20Project%20with%20Architect%20Presenter.png","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggE8uuYSwoqVbYyhCQQbCU9AWsUP1vSxL53RgIiiRKLfDn9xNgw5kIPOSMOb2NXDrlrF4zgyQ_Lj332-MzYvyyKUpvZ9rArlh8blSHaNJ8riaGUVvgxhmbnTpCu3RcjIgPHO5LgnqmP5of3UGw-muFlT2Otm74HwsXAPOjBC6h6kCqEoN2jF6vOs-02ng/s1600/Screenshot%202026-11-24%20105213.png","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGkuegqLPYU8454gx3vTWQo2ttaUqBOGrceAmkkpm5QtnhhfD7l1WAW7JCwjVUGpS6_hPHU-6lxPQ8WQHQ4RLkE2ZEUb4zxBJXB5uilI6u4llUOiD18fKi1tKhOyf7JTILz4P1rJQBxOUTXmlO1QhdOdW3iCzaOr5blAtOjNofws20yA-20-WJaPzl4Q0/s1600/Screenshot%202026-11-26%20114857.png","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7G6OHABUIv1SbSSQJ7JIrOZpOOtLeiXhkpsF-FRbgzHdkzNfhr58WfGiRo0NUu96dSvwnvBwCH3v9SpA-qMJFEpJiLeuRxAeqd8ndIYwyIxTD75xYF3DHqAG3zF77D7id-CBDl9E5SKbykkrTej5wsGfzrlbtZPGmLW3uCNNAz9ZTnYweM7MwKweZ7so/s1600/Screenshot%202026-10-24%20031341.png"];
     
-    
-        let heroImages = ["https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhW5ZcGa6f8NqToba-CYzB4S2raYjgEkqflr2MxQpNE2ETp0dnn_qxXdJEfR30yS2IWfsY8elWuBEa5HpL-96o0FohKELU3nUe2-TjGV42RD0Vmuy9oNRXcsfaKAqdv5wRGdhbbvJRKm_vLTnrbgnV6v42ovWmlVLdIj7WFqhY6uUe1oksWiW1SK6y6g6c/s1600/Design%20Studio%20Project%20with%20Architect%20Presenter.png","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggE8uuYSwoqVbYyhCQQbCU9AWsUP1vSxL53RgIiiRKLfDn9xNgw5kIPOSMOb2NXDrlrF4zgyQ_Lj332-MzYvyyKUpvZ9rArlh8blSHaNJ8riaGUVvgxhmbnTpCu3RcjIgPHO5LgnqmP5of3UGw-muFlT2Otm74HwsXAPOjBC6h6kCqEoN2jF6vOs-02ng/s1600/Screenshot%202026-11-24%20105213.png","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGkuegqLPYU8454gx3vTWQo2ttaUqBOGrceAmkkpm5QtnhhfD7l1WAW7JCwjVUGpS6_hPHU-6lxPQ8WQHQ4RLkE2ZEUb4zxBJXB5uilI6u4llUOiD18fKi1tKhOyf7JTILz4P1rJQBxOUTXmlO1QhdOdW3iCzaOr5blAtOjNofws20yA-20-WJaPzl4Q0/s1600/Screenshot%202026-11-26%20114857.png","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7G6OHABUIv1SbSSQJ7JIrOZpOOtLeiXhkpsF-FRbgzHdkzNfhr58WfGiRo0NUu96dSvwnvBwCH3v9SpA-qMJFEpJiLeuRxAeqd8ndIYwyIxTD75xYF3DHqAG3zF77D7id-CBDl9E5SKbykkrTej5wsGfzrlbtZPGmLW3uCNNAz9ZTnYweM7MwKweZ7so/s1600/Screenshot%202026-10-24%20031341.png"];
-        let products = [{"id":1795769298044,"category":"DESIGN STUDIO","name":"DESIGN KOS 12 KAMAR","price":"Rp. 399.000","link":"http://lynk.id/ibes-store/egx1qwvxvjwv","image":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_mOjzPUal8kIRLQJ4qgzBFD_pb_RfDusIDbRjnV91Gi3OfEx5WSVMD8WMoI6vMxdsn15LY15qQCVZ6dWh-K-GT0GRO0gI8JcJCxtvVDzwVDfFA3k46s2_O8J3rzZIvMIrO1IFM0tavILljsnIlv_hdwvbrQBT4sDvavZnSBTs-FvbixYiIOFKw65B1xIP/s1600/Modern%20Tropical%20Guest%20House%20Design.png"},{"id":1795769337324,"category":"DESIGN STUDIO","name":"DESIGN KOS 24 KAMAR","price":"Rp. 499.000","link":"http://lynk.id/ibes-store/p1ve64zoo3lj","image":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIEdEu9ytif8RPezyg_otUlPvi9JvudsIMWiqs1lHLSamNr_71fFYFi3sPFD1tkT2tMbzRH1kRv6GqmsB-T7b3XRphZnfThXWqI-pWdGLUZHggb8XM_8x3LQARQDgaYlquqO1kPRRMNNOoQEjsTVrzeR54d8t2w9_VO0GFGNAQo0SK_8c5OWFrZRAkB9Kg/s1600/Modern%20Kos-Kosan%20Design%20Package%20Poster.png"},{"id":1795769374047,"category":"DESIGN STUDIO","name":"DESIGN RUMAH MODERN TROPIS","price":"Rp. 699.000","link":"http://lynk.id/ibes-store/5re657zrr5zp","image":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJ39SLw0Wj8mvaVjlSpTusiZ37qvE2TY3vvrEoehj8S_xR5zSSprN6XbheHK9idnib02TdAnBbOt8F2bk5V-RC3jEyy9XOglxTMTntg6yAW22beHBQNR_bUI91RT2H9W2vzXBqTLdBQvMkUZ7EC56KG9BU8LHqyJa1cY3qu5FEltWAfo6K7bCfuQavVZA/s1600/rumah_modern_tropis_fullbleed_1054x1492.jpg"},{"id":1795769407607,"category":"DESIGN STUDIO","name":"DESIGN RUMAH AMERICAN KLASIK","price":"Rp. 699.000","link":"http://lynk.id/ibes-store/23zymg888o38","image":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmyGK4o-4p31c810qPcHiT0_EK-9DFmoM1jnbrH2djDcV5ZFN9EtTFH0lh-X2gp1hDoog3sFAB0Zl6ktZEesVaDJBLb-uQ_PIgLJZGnHPbbwxEf-lNTcvD7Q_R2upN1Y7eey5ukdRRicDnWriX6LB_il7By39taWgmgTY3IadBrJGyXOzH8KJVE5znrs5_/s1600/American%20Classic%20House%20Design%20Package%20%281%29.png"}];
-      
+    let products = [{"id":1795769298044,"category":"DESIGN STUDIO","name":"DESIGN KOS 12 KAMAR","price":"Rp. 399.000","link":"http://lynk.id/ibes-store/egx1qwvxvjwv","image":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_mOjzPUal8kIRLQJ4qgzBFD_pb_RfDusIDbRjnV91Gi3OfEx5WSVMD8WMoI6vMxdsn15LY15qQCVZ6dWh-K-GT0GRO0gI8JcJCxtvVDzwVDfFA3k46s2_O8J3rzZIvMIrO1IFM0tavILljsnIlv_hdwvbrQBT4sDvavZnSBTs-FvbixYiIOFKw65B1xIP/s1600/Modern%20Tropical%20Guest%20House%20Design.png"},{"id":1795769337324,"category":"DESIGN STUDIO","name":"DESIGN KOS 24 KAMAR","price":"Rp. 499.000","link":"http://lynk.id/ibes-store/p1ve64zoo3lj","image":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIEdEu9ytif8RPezyg_otUlPvi9JvudsIMWiqs1lHLSamNr_71fFYFi3sPFD1tkT2tMbzRH1kRv6GqmsB-T7b3XRphZnfThXWqI-pWdGLUZHggb8XM_8x3LQARQDgaYlquqO1kPRRMNNOoQEjsTVrzeR54d8t2w9_VO0GFGNAQo0SK_8c5OWFrZRAkB9Kg/s1600/Modern%20Kos-Kosan%20Design%20Package%20Poster.png"},{"id":1795769374047,"category":"DESIGN STUDIO","name":"DESIGN RUMAH MODERN TROPIS","price":"Rp. 699.000","link":"http://lynk.id/ibes-store/5re657zrr5zp","image":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJ39SLw0Wj8mvaVjlSpTusiZ37qvE2TY3vvrEoehj8S_xR5zSSprN6XbheHK9idnib02TdAnBbOt8F2bk5V-RC3jEyy9XOglxTMTntg6yAW22beHBQNR_bUI91RT2H9W2vzXBqTLdBQvMkUZ7EC56KG9BU8LHqyJa1cY3qu5FEltWAfo6K7bCfuQavVZA/s1600/rumah_modern_tropis_fullbleed_1054x1492.jpg"},{"id":1795769407607,"category":"DESIGN STUDIO","name":"DESIGN RUMAH AMERICAN KLASIK","price":"Rp. 699.000","link":"http://lynk.id/ibes-store/23zymg888o38","image":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmyGK4o-4p31c810qPcHiT0_EK-9DFmoM1jnbrH2djDcV5ZFN9EtTFH0lh-X2gp1hDoog3sFAB0Zl6ktZEesVaDJBLb-uQ_PIgLJZGnHPbbwxEf-lNTcvD7Q_R2upN1Y7eey5ukdRRicDnWriX6LB_il7By39taWgmgTY3IadBrJGyXOzH8KJVE5znrs5_/s1600/American%20Classic%20House%20Design%20Package%20%281%29.png"}];
 
     // ==========================================
-    // RENDER FUNCTIONS
+    // RENDER FUNCTIONS (Logika Tampilan)
     // ==========================================
     function renderSlider() {
       const track = document.getElementById('heroSliderTrack');
@@ -850,25 +866,55 @@
       });
     }
 
+    function createProductCard(prod) {
+      const div = document.createElement('div');
+      div.className = 'product-card';
+      div.innerHTML = `
+        <img src="${prod.image}" alt="${prod.name}" class="product-img">
+        <div class="product-info">
+          <h4>${prod.category}</h4>
+          <h3>${prod.name}</h3>
+          <div class="product-price-row">
+            <span class="product-price">${prod.price}</span>
+            <a href="${prod.link}" target="_blank" class="btn-arrow">&rsaquo;</a>
+          </div>
+        </div>
+      `;
+      return div;
+    }
+
     function renderProducts() {
       const grid = document.getElementById('productGrid');
+      const extraContainer = document.getElementById('extraProductsContainer');
+      const extraTrack = document.getElementById('extraSliderTrack');
+      
       grid.innerHTML = '';
-      products.forEach(prod => {
-        const div = document.createElement('div');
-        div.className = 'product-card';
-        div.innerHTML = `
-          <img src="${prod.image}" alt="${prod.name}" class="product-img">
-          <div class="product-info">
-            <h4>${prod.category}</h4>
-            <h3>${prod.name}</h3>
-            <div class="product-price-row">
-              <span class="product-price">${prod.price}</span>
-              <a href="${prod.link}" target="_blank" class="btn-arrow">&rsaquo;</a>
-            </div>
-          </div>
-        `;
-        grid.appendChild(div);
-      });
+      extraTrack.innerHTML = '';
+
+      // Logika: Jika produk <= 10, tampilkan semua di Grid.
+      // Jika > 10, ambil 10 untuk Grid, sisanya masuk ke Slider.
+      const maxGrid = 10;
+      
+      if (products.length <= maxGrid) {
+        // Tampilkan semua di Grid
+        products.forEach(prod => {
+          grid.appendChild(createProductCard(prod));
+        });
+        extraContainer.classList.remove('active'); // Sembunyikan slider
+      } else {
+        // Tampilkan 10 pertama di Grid
+        const gridProducts = products.slice(0, maxGrid);
+        gridProducts.forEach(prod => {
+          grid.appendChild(createProductCard(prod));
+        });
+
+        // Tampilkan sisanya di Slider
+        const extraProducts = products.slice(maxGrid);
+        extraProducts.forEach(prod => {
+          extraTrack.appendChild(createProductCard(prod));
+        });
+        extraContainer.classList.add('active'); // Tampilkan slider
+      }
     }
 
     function renderAdminProductList() {
@@ -1020,6 +1066,5 @@
 
     setInterval(() => { moveSlide(1); }, 4000);
   </script>
-
-
-</body></html>
+</body>
+</html>
