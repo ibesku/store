@@ -1,379 +1,920 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Desain Rumah Siap Bangun - ALUSINDO</title>
-    <style>
-        /* CSS DASAR DARK MODE ELEGAN */
-        body {
-            background-color: #121212;
-            color: #d1d1d1;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.8;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        .header-logo {
-            text-align: center;
-            font-size: 28px;
-            letter-spacing: 5px;
-            font-weight: bold;
-            margin-bottom: 50px;
-            color: #ffffff;
-        }
-        
-        /* HERO SECTION */
-        .hero-section {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .hero-title {
-            font-size: 28px;
-            color: #ffffff;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-        .hero-subtitle {
-            font-size: 20px;
-            color: #ffd700; /* Emas */
-            font-weight: bold;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog Desain Rumah Siap Bangun by ALUSINDO</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        /* GALERI GAMBAR */
-        .image-gallery {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-        .image-gallery img {
-            width: 100%;
-            height: 250px;
-            border-radius: 8px;
-            object-fit: cover;
-            background-color: #2a2a2a; /* Warna placeholder */
-        }
-        /* Jika gambar utama mau lebih besar */
-        .image-gallery .main-img {
-            grid-column: span 2;
-            height: 400px;
-        }
+  <style>
+    :root {
+      --ink: #17191c;
+      --muted: #5a626a;
+      --gold: #bd9654;
+      --gold-dark: #9b783f;
+      --cream: #f6f3ed;
+      --line: #e7e2d9;
+      --white: #fff;
+      --red: #c93b2b;
+      --blue: #2563eb; /* Biru cerah */
+      --yellow: #facc15; /* Kuning cerah */
+      --font-title: 'Michroma', sans-serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
 
-        /* TIPOGRAFI & SECTION */
-        h2 {
-            font-size: 24px;
-            color: #ffffff;
-            margin-top: 50px;
-            margin-bottom: 20px;
-            border-left: 4px solid #ffd700;
-            padding-left: 15px;
-        }
-        h3 {
-            font-size: 18px;
-            color: #ffd700;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-        p {
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
-        .highlight-text {
-            color: #ffffff;
-            font-weight: bold;
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-        /* LIST & BOX */
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        ul li {
-            margin-bottom: 12px;
-            position: relative;
-            padding-left: 25px;
-        }
-        ul li::before {
-            content: "✓";
-            color: #ffd700;
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-        
-        .box-section {
-            background-color: #1e1e1e;
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
+    /* ========================================================
+       BACKGROUND CERAH DENGAN EFEK GOLD, BIRU, & KUNING
+    ======================================================== */
+    body {
+      margin: 0;
+      /* Latar belakang dasar putih cerah */
+      background-color: #ffffff;
+      /* Efek pendar cahaya (Radial Gradients) */
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(250, 204, 21, 0.15) 0%, transparent 40%), /* Pendar Kuning di kiri atas */
+        radial-gradient(circle at 90% 20%, rgba(37, 99, 235, 0.12) 0%, transparent 45%), /* Pendar Biru di kanan atas */
+        radial-gradient(circle at 50% 50%, rgba(189, 150, 84, 0.1) 0%, transparent 60%), /* Pendar Emas di tengah */
+        radial-gradient(circle at 10% 90%, rgba(37, 99, 235, 0.08) 0%, transparent 40%), /* Pendar Biru di kiri bawah */
+        radial-gradient(circle at 90% 80%, rgba(250, 204, 21, 0.12) 0%, transparent 40%); /* Pendar Kuning di kanan bawah */
+      background-attachment: fixed;
+      background-size: cover;
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.7;
+    }
 
-        /* TABEL PERBANDINGAN */
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 30px;
-        }
-        .comparison-table th, .comparison-table td {
-            border: 1px solid #333;
-            padding: 15px;
-            text-align: left;
-        }
-        .comparison-table th {
-            background-color: #1a1a1a;
-            color: #ffd700;
-            font-weight: bold;
-        }
-        .comparison-table td {
-            background-color: #1e1e1e;
-        }
+    a { color: inherit; text-decoration: none; }
 
-        /* TAG / BADGE */
-        .green-tag {
-            background-color: #1a3c1a;
-            color: #4ade80;
-            display: inline-block;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
+    .wrap {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
 
-        /* TOMBOL CTA */
-        .cta-container {
-            text-align: center;
-            margin: 60px 0;
-        }
-        .cta-button {
-            display: inline-block;
-            background-color: #ffd700;
-            color: #000000;
-            padding: 18px 40px;
-            font-size: 18px;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background-color 0.3s;
-            width: 100%;
-            max-width: 500px;
-            box-sizing: border-box;
-        }
-        .cta-button:hover {
-            background-color: #e6c200;
-        }
-        .cta-button-secondary {
-            display: inline-block;
-            background-color: transparent;
-            color: #ffd700;
-            border: 2px solid #ffd700;
-            padding: 16px 40px;
-            font-size: 16px;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 8px;
-            margin-top: 15px;
-            width: 100%;
-            max-width: 500px;
-            box-sizing: border-box;
-            transition: all 0.3s;
-        }
-        .cta-button-secondary:hover {
-            background-color: #ffd700;
-            color: #000;
-        }
+    /* HEADER ATAS */
+    .top {
+      background: #2a2a2a;
+      color: #fff;
+      padding: 14px 0;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .12em;
+    }
 
-        /* FOOTER */
-        .footer {
-            text-align: center;
-            font-size: 12px;
-            color: #666;
-            margin-top: 80px;
-            border-top: 1px solid #333;
-            padding-top: 20px;
-        }
+    .top .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      align-items: center;
+    }
 
-        /* RESPONSIVE */
-        @media (max-width: 600px) {
-            .image-gallery {
-                grid-template-columns: 1fr;
-            }
-            .image-gallery .main-img {
-                height: 250px;
-            }
-            .hero-title {
-                font-size: 24px;
-            }
-            .comparison-table th, .comparison-table td {
-                padding: 10px;
-                font-size: 14px;
-            }
-        }
-    </style>
+    .brand {
+      font-family: var(--font-title);
+      font-weight: 400;
+      font-size: 15px;
+      letter-spacing: .15em;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .brand span { color: var(--gold); }
+
+    /* HERO SECTION */
+    .hero {
+      /* Dihilangkan background solidnya agar gradien body terlihat tembus */
+      background: transparent; 
+      color: var(--ink);
+      padding: 80px 0 0 0;
+      text-align: center;
+    }
+
+    .eyebrow {
+      font-family: var(--font-title);
+      color: var(--gold-dark);
+      letter-spacing: .14em;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      font-family: var(--font-title);
+      font-weight: 400;
+      font-size: clamp(26px, 4.2vw, 44px);
+      line-height: 1.25;
+      max-width: 900px;
+      margin: 18px auto;
+      color: #111;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #444;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.7;
+      margin: 0 auto 30px auto;
+    }
+
+    .btn-promo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--red);
+      color: #fff;
+      padding: 15px 30px;
+      font-family: var(--font-title);
+      font-size: 14px;
+      letter-spacing: .05em;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform .15s ease, opacity .15s ease;
+      margin-bottom: 40px;
+      border: none;
+      box-shadow: 0 4px 15px rgba(201, 59, 43, 0.3); /* Shadow tombol */
+    }
+
+    .btn-promo:hover { opacity: .9; transform: translateY(-2px); }
+
+    /* SLIDER */
+    .hero-slider {
+      position: relative;
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.05); /* Shadow lebih ringan karena background cerah */
+      background: #fff;
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .slider-track img {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.85);
+      border: 1px solid #ccc;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+
+    .slider-nav:hover { background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    .slider-nav.prev { left: 15px; }
+    .slider-nav.next { right: 15px; }
+
+    /* SECTION UMUM */
+    .section { padding: 80px 0; }
+    /* Section.soft dibuat transparan agar gradien terlihat, diganti dengan efek kaca (glassmorphism) */
+    .section.soft { 
+      background: rgba(255, 255, 255, 0.4); 
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,255,255,0.5);
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+    }
+    
+    .kicker { font-family: var(--font-title); font-size: 11px; color: var(--gold-dark); letter-spacing: .16em; font-weight: 700; margin-bottom: 10px; }
+    .heading { font-family: var(--font-title); font-weight: 400; font-size: clamp(22px, 3.1vw, 34px); line-height: 1.3; margin: 0 0 16px; color: #111; }
+    .lead { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 20px; }
+
+    /* KATALOG PRODUK */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border: 1px solid #eee;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(37, 99, 235, 0.15); } /* Shadow biru saat hover */
+    .product-img { width: 100%; height: 320px; object-fit: cover; background: #e9ecef; }
+
+    .product-info {
+      padding: 20px;
+      background: var(--gold);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .product-info h4 { margin: 0 0 5px 0; font-size: 13px; font-weight: 600; color: #fff; opacity: 0.9; }
+    .product-info h3 { margin: 0 0 15px 0; font-family: var(--font-title); font-size: 16px; font-weight: 400; color: #fff; line-height: 1.4; }
+    .product-price-row { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+    .product-price { font-weight: 800; font-size: 18px; color: #fff; }
+
+    .btn-arrow {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.5);
+      color: #fff;
+      width: 35px; height: 35px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; transition: background 0.3s;
+    }
+    .btn-arrow:hover { background: #fff; color: var(--gold); }
+
+    /* CUSTOM LIST */
+    .custom-list { list-style: none; padding: 0; margin: 0; }
+    .custom-list li { position: relative; padding-left: 26px; margin-bottom: 12px; font-size: 15px; color: #333; }
+    .custom-list li::before { content: "✓"; position: absolute; left: 0; color: var(--gold); font-weight: 800; font-size: 16px; }
+
+    /* TABEL PERBANDINGAN BARU (Dibuat lebih solid karena background cerah) */
+    .comparison-table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      margin-top: 20px; 
+      background: #fff; 
+      border: 1px solid #e2e8f0; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .comparison-table th, .comparison-table td { 
+      padding: 16px 20px; 
+      text-align: left; 
+      border-bottom: 1px solid #e2e8f0; 
+      font-size: 14.5px; 
+      border-right: 1px solid #e2e8f0;
+    }
+
+    .comparison-table th {
+      background: #f8fafc;
+      padding: 25px 20px 15px 20px;
+      vertical-align: top;
+    }
+
+    .comparison-table th .label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .comparison-table th .title {
+      font-family: var(--font-title);
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.4;
+      display: block;
+    }
+
+    /* Warna Kolom Kiri (SEBELUM) */
+    .comparison-table th.col-before { background: #fff1f2; }
+    .comparison-table th.col-before .label { color: #e11d48; }
+    .comparison-table th.col-before .title { color: #64748b; } 
+
+    /* Warna Kolom Kanan (SESUDAH) */
+    .comparison-table th.col-after {
+      background: #f0fdf4; /* Hijau sangat muda */
+      border-bottom: 2px solid #10b981;
+    }
+    .comparison-table th.col-after .label { color: #059669; }
+    .comparison-table th.col-after .title { color: #0f172a; font-weight: 600; }
+
+    .comparison-table td { color: var(--muted); }
+    .comparison-table .highlight-col { 
+      background: #f0fdf4; /* Hijau muda */
+      font-weight: 600; 
+      color: #0f172a; 
+    }
+    
+    .comparison-table th:last-child, 
+    .comparison-table td:last-child { border-right: none; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+
+    /* CTA BOX */
+    .cta-box { 
+      background: #17191c; 
+      color: #fff; 
+      padding: 45px; 
+      border-radius: 8px; 
+      text-align: center; 
+      margin-top: 40px; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    .cta-box h2 { font-family: var(--font-title); font-weight: 400; font-size: clamp(20px, 3vw, 30px); color: #fff; margin-top: 0; }
+    .cta-box p { color: #d2d2d2; max-width: 700px; margin: 0 auto 20px auto; }
+    
+    .btn-cta { 
+      display: block; 
+      width: 100%; 
+      max-width: 450px; 
+      margin: 20px auto 0 auto; 
+      background: var(--gold); 
+      color: #151515; 
+      padding: 16px 20px; 
+      font-family: var(--font-title); 
+      font-size: 15px; 
+      border-radius: 4px; 
+      font-weight: 700; 
+      transition: 0.3s; 
+    }
+    .btn-cta:hover { background: #d1a862; transform: translateY(-2px); }
+
+    .notice { font-size: 12.5px; color: #555; margin-top: 14px; line-height: 1.65; }
+    .footer { background: #111; color: #bbb; padding: 35px 0; font-size: 13.5px; text-align: center; }
+
+    /* ========================================================
+       MODAL ADMIN PANEL
+    ======================================================== */
+    #adminOverlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 9999;
+      backdrop-filter: blur(3px);
+    }
+
+    #adminPanel {
+      display: none;
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 95%; max-width: 1000px;
+      max-height: 90vh;
+      background: #fff;
+      border-radius: 10px;
+      z-index: 10000;
+      overflow-y: auto;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .admin-header {
+      background: #f8f9fa;
+      padding: 15px 25px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .admin-header h2 { margin: 0; font-size: 18px; color: #333; font-family: 'Montserrat', sans-serif; }
+    .admin-actions { display: flex; gap: 10px; }
+    
+    .admin-btn { padding: 8px 16px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 13px; }
+    .admin-btn.green { background: #10b981; color: white; }
+    .admin-btn.gold { background: #bd9654; color: white; }
+    .admin-btn.red { background: #ef4444; color: white; }
+
+    .admin-body { padding: 25px; }
+    
+    .admin-section-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-group { margin-bottom: 15px; display: flex; flex-direction: column; }
+    .form-group label { font-size: 13px; font-weight: 600; margin-bottom: 5px; color: #555; }
+    .form-group input, .form-group textarea, .form-group select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+    }
+
+    #passwordBox {
+      display: none;
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      z-index: 10001;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      width: 300px;
+    }
+    #passwordBox h3 { margin-top: 0; font-size: 16px; color: #333; }
+    #passwordBox input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; }
+    #passwordBox button { width: 100%; padding: 10px; background: #bd9654; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
+
+    @media (max-width: 760px) {
+      .slider-track img { height: 200px; }
+      .top .wrap { font-size: 10.5px; flex-direction: column; text-align: center; gap: 6px; }
+      .product-grid { grid-template-columns: 1fr; }
+      .cta-box { padding: 30px 20px; }
+      .comparison-table th, .comparison-table td { padding: 12px; font-size: 13px; }
+      .comparison-table th { padding: 20px 12px 10px 12px; }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Header Logo -->
-        <div class="header-logo">ALUSINDO</div>
+  <!-- TOP BAR -->
+  <div class="top">
+    <div class="wrap">
+      <div class="brand" id="secretLogo">ALUSINDO<span></span></div>
+      <div>ARCHITECTURE • DESIGN • BUILD</div>
+    </div>
+  </div>
 
-        <!-- Hero Section -->
-        <div class="hero-section">
-            <div class="hero-subtitle">PRODUK DIGITAL: KATALOG DESAIN RUMAH SIAP BANGUN</div>
-            <h1 class="hero-title">PILIH DESAINNYA, SESUAIKAN LAHANNYA,<br>MULAI BANGUN RUMAH IMPIAN ANDA!</h1>
-            <p>Ribuan inspirasi mungkin membuat Anda bingung. Kami hadirkan pilihan desain rumah berdasarkan ukuran lahan dan berbagai tipe bangunan, sehingga Anda tidak perlu memulai semuanya dari nol.</p>
-            <div class="green-tag">SOLUSI PRAKTIS UNTUK CALON PEMILIK RUMAH</div>
-        </div>
-
-        <!-- Galeri Gambar (GANTI URL GAMBAR DENGAN LINK BLOGSPOT ANDA) -->
-        <div class="image-gallery">
-            <!-- Gambar Utama -->
-            <img class="main-img" src="URL_GAMBAR_1_BLOGSPOT" alt="Desain Rumah Minimalis Modern">
-            <!-- Gambar Kecil -->
-            <img src="URL_GAMBAR_2_BLOGSPOT" alt="Tampak Depan Rumah">
-            <img src="URL_GAMBAR_3_BLOGSPOT" alt="Tampak Samping Rumah">
-        </div>
-
-        <!-- 1. Masalah -->
-        <h2>1. Apa masalah yang kami selesaikan?</h2>
-        <p>Bayangkan Anda ingin membangun rumah, tetapi harus menghadapi berbagai kerepotan:</p>
-        <ul>
-            <li>Bingung mencari arsitek yang cocok.</li>
-            <li>Tidak tahu desain apa yang sesuai dengan ukuran tanah.</li>
-            <li>Harus mengeluarkan biaya tambahan untuk membuat desain dari awal.</li>
-            <li>Harus menunggu proses perencanaan desain.</li>
-            <li>Takut desain yang dibuat ternyata tidak sesuai keinginan.</li>
-        </ul>
-        <p class="highlight-text">Sekarang, Anda tidak harus memulai dari nol!</p>
-        <p>Cukup pilih desain rumah yang paling Anda sukai, sesuaikan dengan ukuran lahan dan kebutuhan Anda, kemudian persiapkan pembangunan dengan dokumen desain yang tersedia.</p>
-
-        <!-- 2. Pilihan Desain -->
-        <h2>2. Tersedia berbagai pilihan desain dan ukuran lahan</h2>
-        <p>Konsumen tidak perlu bingung menentukan konsep rumah. Kami menyediakan katalog berbagai tipe dan ukuran desain yang bisa dipilih sesuai kebutuhan.</p>
-        
-        <div class="box-section">
-            <h3>Tipe lahan 6 × 10 meter</h3>
-            <p>Desain rumah minimalis untuk lahan terbatas, dengan pengaturan ruang yang efisien.</p>
-            
-            <h3>Tipe lahan 7 × 12 meter</h3>
-            <p>Pilihan rumah modern dengan tata ruang yang lebih fleksibel.</p>
-            
-            <h3>Tipe lahan 8 × 15 meter</h3>
-            <p>Desain rumah keluarga dengan pilihan satu maupun dua lantai.</p>
-            
-            <h3>Tipe lahan 10 × 20 meter</h3>
-            <p>Desain rumah lebih luas dengan tampilan modern dan elegan.</p>
-            <p style="font-size: 12px; color: #888; margin-top: 15px;">*Ukuran di atas merupakan contoh kategori katalog, bukan daftar desain yang sudah dipastikan tersedia.</p>
-        </div>
-
-        <!-- 3. Apa Saja yang Didapatkan -->
-        <h2>3. Apa saja yang didapatkan?</h2>
-        <p>Setiap desain dapat ditawarkan dalam satu paket dokumen perencanaan, dengan cakupan yang disesuaikan dengan produk yang benar-benar tersedia.</p>
-        <ul>
-            <li>Gambar denah rumah – pembagian ruangan dan tata letak.</li>
-            <li>Gambar tampak depan, samping, dan belakang – panduan visual bentuk bangunan.</li>
-            <li>Gambar 3D fasad – gambaran realistis tampilan rumah.</li>
-            <li>Gambar potongan bangunan – informasi hubungan ruang dan ketinggian.</li>
-            <li>Gambar detail teknis – detail konstruksi sesuai lingkup paket.</li>
-            <li>Gambar struktur – apabila disediakan dan telah dihitung oleh tenaga ahli yang kompeten.</li>
-            <li>Gambar instalasi listrik dan plumbing – apabila termasuk dalam paket.</li>
-            <li>RAB – estimasi kebutuhan dan biaya pembangunan, jika termasuk dalam paket.</li>
-        </ul>
-        <p>Bukan hanya mendapatkan inspirasi gambar rumah, tetapi mendapatkan dokumen perencanaan yang dapat menjadi acuan pekerjaan tukang dan pelaksana pembangunan.</p>
-
-        <!-- 4. Perbandingan -->
-        <h2>4. Mengapa produk ini sangat menguntungkan?</h2>
-        <p>Bandingkan manfaatnya!</p>
-        
-        <table class="comparison-table">
-            <thead>
-                <tr>
-                    <th>Mencari desain dari nol</th>
-                    <th>Menggunakan katalog desain</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Memulai proses konsultasi.</td>
-                    <td>Pilihan desain sudah tersedia.</td>
-                </tr>
-                <tr>
-                    <td>Menentukan konsep.</td>
-                    <td>Bisa membandingkan beberapa tipe.</td>
-                </tr>
-                <tr>
-                    <td>Menunggu proses desain.</td>
-                    <td>Lebih cepat menentukan konsep.</td>
-                </tr>
-                <tr>
-                    <td>Mengeluarkan biaya perencanaan.</td>
-                    <td>Memiliki dokumen desain sesuai paket.</td>
-                </tr>
-            </tbody>
-        </table>
-        <p class="highlight-text">Keuntungan terbesar: Anda tidak harus mengulang proses pencarian inspirasi dan perencanaan konsep dari awal.</p>
-
-        <!-- 5. Hemat Biaya -->
-        <h2>5. Hemat biaya, hindari kesalahan perencanaan</h2>
-        <p>Pernah membayangkan berapa banyak biaya yang bisa terbuang akibat salah menentukan desain, salah memperkirakan kebutuhan material, atau harus membongkar pekerjaan karena gambar tidak jelas?</p>
-        <p>Dengan perencanaan yang baik, Anda dapat mengurangi risiko tersebut. Dokumen desain yang lengkap membantu tukang dan pelaksana memahami apa yang harus dikerjakan.</p>
-        <p class="highlight-text">Ingat, penghematan terbesar bukan sekadar membeli desain murah, tetapi menghindari kesalahan mahal saat pembangunan.</p>
-
-        <!-- 6. Penawaran -->
-        <h2>6. Penawaran produk yang membuat konsumen ingin membeli</h2>
-        <div class="box-section">
-            <h3>DESAIN RUMAH SIAP PILIH</h3>
-            <p>Berhenti bingung mencari desain. Saatnya memilih rumah impian Anda!</p>
-            <p><strong>Yang Anda dapatkan:</strong></p>
-            <ul>
-                <li>Beragam pilihan tipe rumah.</li>
-                <li>Berbagai pilihan ukuran lahan.</li>
-                <li>Beragam konsep arsitektur.</li>
-                <li>Dokumen gambar desain sesuai paket.</li>
-                <li>Pilihan desain satu dan dua lantai.</li>
-                <li>Lebih praktis dan hemat waktu perencanaan.</li>
-            </ul>
-            <h3>PILIH DESAIN SESUAI KEBUTUHAN</h3>
-            <p>Cukup pilih desain yang Anda sukai, konsultasikan penyesuaian dengan kondisi lahan, kemudian siapkan pembangunan Anda.</p>
-        </div>
-
-        <!-- 7. Kalimat Penjualan -->
-        <h2>7. Bayangkan kemudahannya</h2>
-        <h3>BAYANGKAN, ANDA BISA MEMILIKI DESAIN RUMAH LENGKAP TANPA HARUS REPOT MEMULAI DARI NOL!</h3>
-        <p>Tidak perlu menghabiskan waktu berhari-hari mencari referensi desain di internet. Tidak perlu bingung menentukan konsep rumah. Tidak perlu memulai proses perencanaan dari halaman kosong.</p>
-        <p>Kami telah menyiapkan berbagai pilihan desain rumah berdasarkan tipe dan ukuran lahan.</p>
-        <p>Anda tinggal memilih desain yang paling sesuai dengan selera, kebutuhan keluarga, dan ukuran tanah Anda. Setelah itu, Anda mendapatkan dokumen gambar sesuai paket yang dapat digunakan sebagai acuan pekerjaan pembangunan.</p>
-        <p>Lebih praktis, lebih terencana, dan berpotensi menghemat biaya perencanaan serta mengurangi risiko kesalahan pembangunan.</p>
-        <p class="highlight-text" style="color: #ff6b6b;">Jangan sampai uang ratusan juta yang Anda investasikan untuk membangun rumah justru terbuang karena perencanaan yang kurang matang.</p>
-
-        <!-- 8. CTA -->
-        <h2>8. Tanah sudah ada, desain rumah belum ada?</h2>
-        <p>Jangan tunda rencana membangun rumah impian Anda. Temukan desain yang sesuai dengan ukuran lahan Anda melalui katalog desain rumah kami.</p>
-        
-        <div class="cta-container">
-            <!-- GANTI URL_LYNK_ID_ANDA DENGAN LINK PEMBAYARAN ANDA -->
-            <a href="URL_LYNK_ID_ANDA" class="cta-button" target="_blank">DAPATKAN KATALOG DESAIN SEKARANG</a>
-            
-            <!-- GANTI URL_WHATSAPP_ANDA DENGAN NOMOR WA ANDA (contoh: https://wa.me/628123456789) -->
-            <a href="URL_WHATSAPP_ANDA" class="cta-button-secondary" target="_blank">KIRIM UKURAN TANAH & KONSULTASI</a>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            &copy; 2024 ALUSINDO. All rights reserved.<br>
-            Dokumen desain disesuaikan dengan paket yang dipilih.
-        </div>
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">PRODUK DIGITAL: KATALOG DESAIN RUMAH SIAP BANGUN</div>
+      <h1>Pilih Desainnya, Sesuaikan Lahannya, Mulai Bangun Rumah Impian Anda!</h1>
+      <p>Ribuan inspirasi mungkin membuat Anda bingung. Kami hadirkan pilihan desain rumah berdasarkan ukuran lahan dan berbagai tipe bangunan, sehingga Anda tidak perlu memulai semuanya dari nol.</p>
+      <a href="#katalog-produk" class="btn-promo">PROMO KATALOG &nbsp; <span>&darr;</span></a>
     </div>
 
+    <div class="hero-slider">
+      <div class="slider-track" id="heroSliderTrack"></div>
+      <button class="slider-nav prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="slider-nav next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+  </header>
+
+  <!-- SECTION 1: MASALAH -->
+  <section class="section">
+    <div class="wrap">
+      <div class="kicker">1. APA MASALAH YANG KAMI SELESAIKAN?</div>
+      <h2 class="heading">Bayangkan Anda ingin membangun rumah, tetapi harus menghadapi berbagai kerepotan:</h2>
+      
+      <ul class="custom-list" style="margin-top:20px; margin-bottom:30px;">
+        <li>Bingung mencari arsitek yang cocok.</li>
+        <li>Tidak tahu desain apa yang sesuai dengan ukuran tanah.</li>
+        <li>Harus mengeluarkan biaya tambahan untuk membuat desain dari awal.</li>
+        <li>Harus menunggu proses perencanaan desain.</li>
+        <li>Takut desain yang dibuat ternyata tidak sesuai keinginan.</li>
+      </ul>
+
+      <p class="lead" style="color: var(--blue); font-weight: 800;">Sekarang, Anda tidak harus memulai dari nol!</p>
+      <p>Cukup pilih desain rumah yang paling Anda sukai, sesuaikan dengan ukuran lahan dan kebutuhan Anda, kemudian persiapkan pembangunan dengan dokumen desain yang tersedia.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2: UKURAN LAHAN (Tanpa Produk) -->
+  <section class="section soft">
+    <div class="wrap">
+      <div class="kicker">2. PILIHAN DESAIN & UKURAN LAHAN</div>
+      <h2 class="heading">Tersedia berbagai pilihan desain dan ukuran lahan</h2>
+      <p>Konsumen tidak perlu bingung menentukan konsep rumah. Kami menyediakan katalog berbagai tipe dan ukuran desain yang bisa dipilih sesuai kebutuhan.</p>
+
+      <div style="margin-top:30px; background:#fff; border:1px solid #eee; padding:25px; border-radius:8px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+        <p style="margin:0 0 15px 0; font-weight:600; font-size:15px;">Kategori Berdasarkan Ukuran Lahan:</p>
+        <ul style="margin:0; padding-left:20px; color:var(--muted); font-size:14.5px;">
+          <li><b>6 × 10 meter:</b> Desain rumah minimalis untuk lahan terbatas, dengan pengaturan ruang yang efisien.</li>
+          <li><b>7 × 12 meter:</b> Pilihan rumah modern dengan tata ruang yang lebih fleksibel.</li>
+          <li><b>8 × 15 meter:</b> Desain rumah keluarga dengan pilihan satu maupun dua lantai.</li>
+          <li><b>10 × 20 meter:</b> Desain rumah lebih luas dengan tampilan modern dan elegan.</li>
+        </ul>
+        <p class="notice" style="margin-bottom:0;">*Ukuran di atas merupakan contoh kategori katalog, bukan daftar desain yang sudah dipastikan tersedia.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: APA SAJA YANG DIDAPATKAN -->
+  <section class="section">
+    <div class="wrap">
+      <div class="kicker">3. APA SAJA YANG DIDAPATKAN?</div>
+      <h2 class="heading">Dokumen Perencanaan Lengkap</h2>
+      <p>Setiap desain dapat ditawarkan dalam satu paket dokumen perencanaan, dengan cakupan yang disesuaikan dengan produk yang benar-benar tersedia.</p>
+
+      <ul class="custom-list" style="margin-top:30px">
+        <li><b>Gambar denah rumah</b> – pembagian ruangan dan tata letak.</li>
+        <li><b>Gambar tampak depan, samping, dan belakang</b> – panduan visual bentuk bangunan.</li>
+        <li><b>Gambar 3D fasad</b> – gambaran realistis tampilan rumah.</li>
+        <li><b>Gambar potongan bangunan</b> – informasi hubungan ruang dan ketinggian.</li>
+        <li><b>Gambar detail teknis</b> – detail konstruksi sesuai lingkup paket.</li>
+        <li><b>Gambar struktur</b> – apabila disediakan dan telah dihitung oleh tenaga ahli yang kompeten.</li>
+        <li><b>Gambar instalasi listrik dan plumbing</b> – apabila termasuk dalam paket.</li>
+        <li><b>RAB (Rencana Anggaran Biaya)</b> – estimasi kebutuhan dan biaya pembangunan, jika termasuk dalam paket.</li>
+      </ul>
+      
+      <p class="lead" style="margin-top:30px; font-size:15px;">Bukan hanya mendapatkan inspirasi gambar rumah, tetapi mendapatkan dokumen perencanaan yang dapat menjadi acuan pekerjaan tukang dan pelaksana pembangunan.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4: PERBANDINGAN (SEBELUM & SESUDAH) -->
+  <section class="section soft">
+    <div class="wrap">
+      <div class="kicker">4. MENGAPA PRODUK INI SANGAT MENGUNTUNGKAN?</div>
+      <h2 class="heading">Bandingkan Manfaatnya!</h2>
+      
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th class="col-before">
+              <span class="label">SEBELUM</span>
+              <span class="title">Mencari desain dari nol</span>
+            </th>
+            <th class="col-after">
+              <span class="label">SESUDAH</span>
+              <span class="title">Menggunakan katalog desain</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Memulai proses konsultasi.</td>
+            <td class="highlight-col">Pilihan desain sudah tersedia.</td>
+          </tr>
+          <tr>
+            <td>Menentukan konsep.</td>
+            <td class="highlight-col">Bisa membandingkan beberapa tipe.</td>
+          </tr>
+          <tr>
+            <td>Menunggu proses desain.</td>
+            <td class="highlight-col">Lebih cepat menentukan konsep.</td>
+          </tr>
+          <tr>
+            <td>Mengeluarkan biaya perencanaan.</td>
+            <td class="highlight-col">Memiliki dokumen desain sesuai paket.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="lead" style="margin-top:20px; font-size:15px;">Keuntungan terbesar: Anda tidak harus mengulang proses pencarian inspirasi dan perencanaan konsep dari awal.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5: HEMAT BIAYA -->
+  <section class="section">
+    <div class="wrap">
+      <div class="kicker">5. HEMAT BIAYA, HINDARI KESALAHAN PERENCANAAN</div>
+      <h2 class="heading">Perencanaan yang baik mengurangi risiko</h2>
+      <p>Pernah membayangkan berapa banyak biaya yang bisa terbuang akibat salah menentukan desain, salah memperkirakan kebutuhan material, atau harus membongkar pekerjaan karena gambar tidak jelas?</p>
+      <p>Dengan perencanaan yang baik, Anda dapat mengurangi risiko tersebut. Dokumen desain yang lengkap membantu tukang dan pelaksana memahami apa yang harus dikerjakan.</p>
+      
+      <div style="padding: 30px; text-align: left; background: #fff; border-left: 4px solid var(--blue); margin-top: 30px; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+        <p style="color: var(--ink); font-weight: 600; margin: 0; font-size: 16px;">Ingat, penghematan terbesar bukan sekadar membeli desain murah, tetapi menghindari kesalahan mahal saat pembangunan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: PENAWARAN PRODUK & KATALOG GRID -->
+  <section class="section soft" id="katalog-produk">
+    <div class="wrap">
+      <div class="kicker">6. PENAWARAN PRODUK YANG MEMBUAT KONSUMEN INGIN MEMBELI</div>
+      <h2 class="heading">DESAIN RUMAH SIAP PILIH</h2>
+      <p>Berhenti bingung mencari desain. Saatnya memilih rumah impian Anda!</p>
+      
+      <p style="margin-top:20px; font-weight:600;">Yang Anda dapatkan:</p>
+      <ul class="custom-list" style="margin-bottom:30px;">
+        <li>Beragam pilihan tipe rumah.</li>
+        <li>Berbagai pilihan ukuran lahan.</li>
+        <li>Beragam konsep arsitektur.</li>
+        <li>Dokumen gambar desain sesuai paket.</li>
+        <li>Pilihan desain satu dan dua lantai.</li>
+        <li>Lebih praktis dan hemat waktu perencanaan.</li>
+      </ul>
+
+      <h3 style="font-family:var(--font-title); font-size:18px; margin-bottom:10px;">PILIH DESAIN SESUAI KEBUTUHAN</h3>
+      <p>Cukup pilih desain yang Anda sukai, konsultasikan penyesuaian dengan kondisi lahan, kemudian siapkan pembangunan Anda.</p>
+
+      <!-- KATALOG PRODUK GRID -->
+      <div class="product-grid" id="productGrid">
+        <!-- Diisi via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7 & 8: PENUTUP & CTA -->
+  <section class="section">
+    <div class="wrap">
+      <div class="kicker">7. BAYANGKAN KEMUDAHANNYA</div>
+      <h2 class="heading">BAYANGKAN, ANDA BISA MEMILIKI DESAIN RUMAH LENGKAP TANPA HARUS REPOT MEMULAI DARI NOL!</h2>
+      <p>Tidak perlu menghabiskan waktu berhari-hari mencari referensi desain di internet. Tidak perlu bingung menentukan konsep rumah. Tidak perlu memulai proses perencanaan dari halaman kosong.</p>
+      <p>Kami telah menyiapkan berbagai pilihan desain rumah berdasarkan tipe dan ukuran lahan. Anda tinggal memilih desain yang paling sesuai dengan selera, kebutuhan keluarga, dan ukuran tanah Anda.</p>
+      <p>Setelah itu, Anda mendapatkan dokumen gambar sesuai paket yang dapat digunakan sebagai acuan pekerjaan pembangunan. Lebih praktis, lebih terencana, dan berpotensi menghemat biaya perencanaan serta mengurangi risiko kesalahan pembangunan.</p>
+      
+      <div class="cta-box" style="margin-top:40px;">
+        <div class="kicker" style="color:#e3c58f; margin-bottom:10px;">8. TANAH SUDAH ADA, DESAIN RUMAH BELUM ADA?</div>
+        <p>Jangan sampai uang ratusan juta yang Anda investasikan untuk membangun rumah justru terbuang karena perencanaan yang kurang matang.</p>
+        <p>Jangan tunda rencana membangun rumah impian Anda. Temukan desain yang sesuai dengan ukuran lahan Anda melalui katalog desain rumah kami.</p>
+        
+        <a href="#katalog-produk" class="btn-cta">LIHAT KATALOG DESAIN SEKARANG &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <b>IBES STORE by ALUSINDO</b><br>
+      Architecture • Design • Build<br>
+      <span>Halaman penawaran digital · Pembayaran resmi diproses melalui Lynk.id.</span>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       ADMIN PANEL & MODAL PASSWORD
+  ======================================================== -->
+  
+  <div id="adminOverlay"></div>
+
+  <div id="passwordBox">
+    <h3>Masukkan Password Admin</h3>
+    <input type="password" id="adminPassword" placeholder="Password..." onkeypress="if(event.key === 'Enter') checkPassword()">
+    <button onclick="checkPassword()">Masuk</button>
+  </div>
+
+  <div id="adminPanel">
+    <div class="admin-header">
+      <h2>⚙️ Panel Kelola Toko & Database</h2>
+      <div class="admin-actions">
+        <button class="admin-btn green" onclick="downloadHTML()">⬇️ Unduh index.html</button>
+        <button class="admin-btn red" onclick="closeAdmin()">✖ Keluar</button>
+      </div>
+    </div>
+    
+    <div class="admin-body">
+      <h3 class="admin-section-title">🖼️ Edit Gambar Slider Hero (Pisahkan dengan Koma)</h3>
+      <div class="form-group">
+        <textarea id="inputSliderImages" rows="3" placeholder="https://blogger.com/gambar1.jpg, https://blogger.com/gambar2.jpg"></textarea>
+      </div>
+      <button class="admin-btn gold" onclick="saveSlider()">Simpan Slider</button>
+      
+      <hr style="margin: 25px 0; border: 0; border-top: 1px solid #ddd;">
+
+      <h3 class="admin-section-title">➕ Tambah Produk Baru</h3>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+        <div class="form-group">
+          <label>Nama Produk</label>
+          <input type="text" id="prodName" placeholder="Contoh: Desain Rumah Modern">
+        </div>
+        <div class="form-group">
+          <label>Harga Display (Teks)</label>
+          <input type="text" id="prodPrice" placeholder="Rp 699.000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Link Pembelian (Lynk.id / WA)</label>
+        <input type="text" id="prodLink" placeholder="https://lynk.id/...">
+      </div>
+      <div class="form-group">
+        <label>Link Gambar Blogspot</label>
+        <input type="text" id="prodImage" placeholder="https://blogger.googleusercontent.com/...">
+      </div>
+      <div class="form-group">
+        <label>Kategori Label Kecil</label>
+        <input type="text" id="prodCategory" placeholder="DESIGN STUDIO" value="DESIGN STUDIO">
+      </div>
+      <button class="admin-btn gold" onclick="addNewProduct()">Tambah ke Katalog</button>
+
+      <hr style="margin: 25px 0; border: 0; border-top: 1px solid #ddd;">
+
+      <h3 class="admin-section-title">📦 Daftar Produk Saat Ini</h3>
+      <div id="adminProductList" style="display: flex; flex-direction: column; gap: 10px;"></div>
+
+    </div>
+  </div>
+
+  <script>
+    // ==========================================
+    // DATA STATE
+    // ==========================================
+    let heroImages = [
+      'https://via.placeholder.com/1120x350/cccccc/000000?text=Gambar+Slider+1',
+      'https://via.placeholder.com/1120x350/cccccc/000000?text=Gambar+Slider+2'
+    ];
+
+    let products = [
+      {
+        id: 1,
+        category: 'DESIGN STUDIO',
+        name: 'DESAIN RUMAH MODERN TROPIS',
+        price: 'Rp. 699.000,00',
+        link: 'https://lynk.id/anda',
+        image: 'https://via.placeholder.com/300x320/eeeeee/333333?text=Produk+1'
+      },
+      {
+        id: 2,
+        category: 'DESIGN STUDIO',
+        name: 'DESAIN RUMAH AMERICAN KLASIK',
+        price: 'Rp. 699.000,00',
+        link: 'https://lynk.id/anda',
+        image: 'https://via.placeholder.com/300x320/eeeeee/333333?text=Produk+2'
+      }
+    ];
+
+    // ==========================================
+    // RENDER FUNCTIONS
+    // ==========================================
+    function renderSlider() {
+      const track = document.getElementById('heroSliderTrack');
+      track.innerHTML = '';
+      heroImages.forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        track.appendChild(img);
+      });
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = '';
+      products.forEach(prod => {
+        const div = document.createElement('div');
+        div.className = 'product-card';
+        div.innerHTML = `
+          <img src="${prod.image}" alt="${prod.name}" class="product-img">
+          <div class="product-info">
+            <h4>${prod.category}</h4>
+            <h3>${prod.name}</h3>
+            <div class="product-price-row">
+              <span class="product-price">${prod.price}</span>
+              <a href="${prod.link}" target="_blank" class="btn-arrow">&rsaquo;</a>
+            </div>
+          </div>
+        `;
+        grid.appendChild(div);
+      });
+    }
+
+    function renderAdminProductList() {
+      const list = document.getElementById('adminProductList');
+      list.innerHTML = '';
+      products.forEach((prod, index) => {
+        const item = document.createElement('div');
+        item.style = 'display:flex; justify-content:space-between; align-items:center; background:#f9f9f9; padding:10px; border:1px solid #ddd; border-radius:4px;';
+        item.innerHTML = `
+          <span><b>${prod.name}</b> (${prod.price})</span>
+          <button class="admin-btn red" onclick="deleteProduct(${index})">Hapus</button>
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    renderSlider();
+    renderProducts();
+
+    // ==========================================
+    // LOGIKA PASSWORD & PANEL ADMIN
+    // ==========================================
+    let clickCount = 0;
+    let clickTimer;
+
+    document.getElementById('secretLogo').addEventListener('click', () => {
+      clickCount++;
+      clearTimeout(clickTimer);
+      clickTimer = setTimeout(() => { clickCount = 0; }, 1000);
+
+      if (clickCount >= 5) {
+        clickCount = 0;
+        document.getElementById('adminOverlay').style.display = 'block';
+        document.getElementById('passwordBox').style.display = 'block';
+      }
+    });
+
+    function checkPassword() {
+      const pass = document.getElementById('adminPassword').value;
+      if (pass === 'admin123') {
+        document.getElementById('passwordBox').style.display = 'none';
+        document.getElementById('adminPanel').style.display = 'block';
+        document.getElementById('inputSliderImages').value = heroImages.join(', ');
+        renderAdminProductList();
+      } else {
+        alert('Password Salah!');
+      }
+    }
+
+    function closeAdmin() {
+      document.getElementById('adminOverlay').style.display = 'none';
+      document.getElementById('adminPanel').style.display = 'none';
+      document.getElementById('adminPassword').value = '';
+    }
+
+    // ==========================================
+    // FUNGSI EDIT DATA
+    // ==========================================
+    function saveSlider() {
+      const val = document.getElementById('inputSliderImages').value;
+      heroImages = val.split(',').map(url => url.trim()).filter(url => url !== '');
+      renderSlider();
+      alert('Slider Berhasil Diperbarui di Layar! Klik "Unduh index.html" untuk menyimpannya permanen.');
+    }
+
+    function addNewProduct() {
+      const name = document.getElementById('prodName').value;
+      const price = document.getElementById('prodPrice').value;
+      const link = document.getElementById('prodLink').value;
+      const image = document.getElementById('prodImage').value;
+      const category = document.getElementById('prodCategory').value;
+
+      if (!name || !price || !link || !image) {
+        alert('Mohon isi semua kolom produk!');
+        return;
+      }
+
+      products.push({ id: Date.now(), category, name, price, link, image });
+      renderProducts();
+      renderAdminProductList();
+
+      document.getElementById('prodName').value = '';
+      document.getElementById('prodPrice').value = '';
+      document.getElementById('prodLink').value = '';
+      document.getElementById('prodImage').value = '';
+
+      alert('Produk Berhasil Ditambahkan di Layar!');
+    }
+
+    function deleteProduct(index) {
+      if (confirm('Yakin ingin menghapus produk ini?')) {
+        products.splice(index, 1);
+        renderProducts();
+        renderAdminProductList();
+      }
+    }
+
+    // ==========================================
+    // FITUR UNDUH HTML
+    // ==========================================
+    function downloadHTML() {
+      let htmlContent = document.documentElement.outerHTML;
+      const newDataScript = `
+        let heroImages = ${JSON.stringify(heroImages)};
+        let products = ${JSON.stringify(products)};
+      `;
+      const regexData = /let heroImages = \[[\s\S]*?\];\s*let products = \[[\s\S]*?\];/;
+      
+      if (regexData.test(htmlContent)) {
+        htmlContent = htmlContent.replace(regexData, newDataScript);
+      } else {
+        alert("Peringatan: Gagal menyuntikkan data baru secara otomatis.");
+      }
+
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // ==========================================
+    // SLIDER NAVIGATION LOGIC
+    // ==========================================
+    let currentSlide = 0;
+    
+    function moveSlide(direction) {
+      const track = document.getElementById('heroSliderTrack');
+      const total = track.children.length;
+      if(total === 0) return;
+
+      currentSlide += direction;
+      if (currentSlide < 0) currentSlide = total - 1;
+      else if (currentSlide >= total) currentSlide = 0;
+      
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    setInterval(() => { moveSlide(1); }, 4000);
+  </script>
 </body>
 </html>
